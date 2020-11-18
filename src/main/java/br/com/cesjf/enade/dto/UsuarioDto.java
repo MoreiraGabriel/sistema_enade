@@ -1,5 +1,8 @@
 package br.com.cesjf.enade.dto;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import br.com.cesjf.enade.model.Usuario;
 
 public class UsuarioDto {
@@ -14,6 +17,10 @@ public class UsuarioDto {
 		this.id = usuario.getId();
 		this.nomeUsuario = usuario.getEmailUsuario();
 		this.emailUsuario = usuario.getEmailUsuario();
+	}
+	
+	public static List<UsuarioDto> converter(List<Usuario> usuarios){
+		return usuarios.stream().map(UsuarioDto::new).collect(Collectors.toList());
 	}
 
 	public Long getId() {
