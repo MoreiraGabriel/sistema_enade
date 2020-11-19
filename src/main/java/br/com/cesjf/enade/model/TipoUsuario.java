@@ -27,6 +27,11 @@ public class TipoUsuario {
 		this.listaUsuarios = usuarios;
 	}
 
+	public TipoUsuario(Long idTipoUsuario, String nomeUsuario) {
+		this.idTipoUsuario = idTipoUsuario;
+		this.nomeUsuario = nomeUsuario;
+	}
+
 	public Long getIdTipoUsuario() {
 		return idTipoUsuario;
 	}

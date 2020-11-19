@@ -40,6 +40,13 @@ public class Usuario {
 		this.tipoUsuario = tipoUsuario;
 	}
 	
+	public Usuario(String nomeUsuario, String emailUsuario, String senhaUsuario, TipoUsuario tipoUsuario) {
+		this.nomeUsuario = nomeUsuario;
+		this.emailUsuario = emailUsuario;
+		this.senhaUsuario = senhaUsuario;
+		this.tipoUsuario = tipoUsuario;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
