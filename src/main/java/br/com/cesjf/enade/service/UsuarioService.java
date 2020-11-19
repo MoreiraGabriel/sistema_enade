@@ -1,5 +1,7 @@
 package br.com.cesjf.enade.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,11 @@ public class UsuarioService {
 	public UsuarioDto cadastrar(UsuarioRequest request) {
 		Usuario usuario = request.converter(tpUsuarioRepository);
 		return new UsuarioDto(repository.save(usuario));
+	}
+
+	public List<UsuarioDto> obterTodos() {
+
+		return UsuarioDto.converter(repository.findAll());
 	}
 
 }

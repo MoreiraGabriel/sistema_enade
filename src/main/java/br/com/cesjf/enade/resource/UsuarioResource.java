@@ -2,6 +2,7 @@ package br.com.cesjf.enade.resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,4 +24,9 @@ public class UsuarioResource {
 		return ResponseEntity.ok(service.cadastrar(request));
 	}
 	
+	@GetMapping("listar")
+	public ResponseEntity<?> listar(){
+		
+		return ResponseEntity.ok(service.obterTodos());
+	}
 }
