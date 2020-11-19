@@ -1,6 +1,7 @@
 package br.com.cesjf.enade.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +27,23 @@ public class UsuarioService {
 	}
 
 	public List<UsuarioDto> obterTodos() {
-
 		return UsuarioDto.converter(repository.findAll());
+	}
+
+	public UsuarioDto obterPorId(Long id) {
+		Optional<Usuario> usuario = repository.findById(id);
+		
+		return usuario.isPresent() ? new UsuarioDto(usuario.get()) : null;
+	}
+
+	public Boolean deletar(Long id) {
+		Optional<Usuario> usuario = repository.findById(id);
+		Boolean retorno = false;
+		if (usuario.isPresent()) {
+			repository.deleteById(id);
+			retorno = true;
+		}
+		return  retorno;
 	}
 
 }
