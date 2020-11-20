@@ -35,6 +35,22 @@ public class UsuarioService {
 		
 		return usuario.isPresent() ? new UsuarioDto(usuario.get()) : null;
 	}
+	
+
+
+	public UsuarioDto atualizar(Long id, UsuarioRequest request) {
+		Optional<Usuario> optional = repository.findById(id);
+		Usuario usuario = null;
+		if(optional.isPresent()) {
+			usuario = optional.get();
+			usuario.setNomeUsuario(request.getNomeUsuario());
+			usuario.setEmailUsuario(request.getEmailUsuario());
+			usuario.setSenhaUsuario(request.getSenhaUsuario());
+			return new UsuarioDto(repository.save(usuario));
+		}
+		
+		return null;		
+	}
 
 	public Boolean deletar(Long id) {
 		Optional<Usuario> usuario = repository.findById(id);
