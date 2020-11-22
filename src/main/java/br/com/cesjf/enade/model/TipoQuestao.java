@@ -1,10 +1,12 @@
 package br.com.cesjf.enade.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class TipoQuestao {
@@ -14,8 +16,8 @@ public class TipoQuestao {
 	
 	private String nomeTipoQuestao;
 	
-	@ManyToOne
-	private Questao questao;
+	@OneToMany(mappedBy = "tpQuestao")
+	private List<Questao> questoes;
 	
 	public TipoQuestao() {}
 	
@@ -36,11 +38,11 @@ public class TipoQuestao {
 	public void setNomeTipoQuestao(String nomeTipoQuestao) {
 		this.nomeTipoQuestao = nomeTipoQuestao;
 	}
-	public Questao getQuestao() {
-		return questao;
+	public List<Questao> getQuestao() {
+		return questoes;
 	}
-	public void setQuestao(Questao questao) {
-		this.questao = questao;
+	public void setQuestao(List<Questao> questao) {
+		this.questoes = questao;
 	}
 	
 }

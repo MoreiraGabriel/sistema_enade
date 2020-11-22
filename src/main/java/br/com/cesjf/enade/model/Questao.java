@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -32,6 +33,7 @@ public class Questao {
 	private Boolean estadoQuestao;
 	
 	@ManyToOne
+	@JoinColumn(name = "tp_questao_id")
 	private TipoQuestao tpQuestao;
 	
 	@ManyToMany(mappedBy = "listaQuestoes")
