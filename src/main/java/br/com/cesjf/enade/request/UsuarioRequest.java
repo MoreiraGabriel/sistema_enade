@@ -5,12 +5,22 @@ import java.util.Optional;
 import br.com.cesjf.enade.model.TipoUsuario;
 import br.com.cesjf.enade.model.Usuario;
 import br.com.cesjf.enade.repository.TipoUsuarioRepository;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+@ApiModel(value = "Request para usuário.")
 public class UsuarioRequest {
 		
+	@ApiModelProperty(value = "Nome do usuario.")
 	private String nomeUsuario;	
+	
+	@ApiModelProperty(value = "E-mail do usuario.")
 	private String emailUsuario;
+	
+	@ApiModelProperty(value = "Senha do usuario.")
 	private String senhaUsuario;
+	
+	@ApiModelProperty(value = "Tipo do usuario.")
 	private Long idTipoUsuario;
 
 	public UsuarioRequest() {}

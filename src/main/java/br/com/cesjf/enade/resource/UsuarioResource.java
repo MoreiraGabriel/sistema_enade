@@ -14,20 +14,25 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.cesjf.enade.dto.UsuarioDto;
 import br.com.cesjf.enade.request.UsuarioRequest;
 import br.com.cesjf.enade.service.UsuarioService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("usuario")
+@Api(value = "Controller para usuario.")
 public class UsuarioResource {
 	
 	@Autowired
 	private UsuarioService service;
 	
 	@GetMapping("listar")
+	@ApiOperation(value = "Endpoint para listar todos os usuários.")
 	public ResponseEntity<?> listar(){		
 		return ResponseEntity.ok(service.obterTodos());
 	}
 	
 	@GetMapping("listar/{id}")
+	@ApiOperation(value = "Endpoint para listar usuáraio por id.")
 	public ResponseEntity<?> obterPorId(@PathVariable Long id){	
 		UsuarioDto dto = service.obterPorId(id);
 		
@@ -36,17 +41,20 @@ public class UsuarioResource {
 	}
 
 	@PostMapping("cadastrar")
+	@ApiOperation(value = "Endpoint para cadastrar usuáraio.")
 	public ResponseEntity<?> cadastrar(@RequestBody UsuarioRequest request){		
 		return ResponseEntity.ok(service.cadastrar(request));
 	}
 	
 	@PutMapping("atualizar/{id}")
+	@ApiOperation(value = "Endpoint para atualizar usuáraio.")
 	public ResponseEntity<?> atualizar(@PathVariable Long id ,@RequestBody UsuarioRequest request){
 
 		return ResponseEntity.ok(service.atualizar(id, request));
 	}
 	
 	@DeleteMapping("deletar/{id}")
+	@ApiOperation(value = "Endpoint para deletar usuáraio por id.")
 	public ResponseEntity<?> deletar(@PathVariable Long id){
 		
 		return service.deletar(id).equals(true)
