@@ -19,6 +19,8 @@ public class QuestaoDto {
 	private String alternativaD;
 	
 	private String alternativaE;
+	
+	private String tpQuestao;
 
 	public QuestaoDto(Questao questao) {
 		this.idQuestao = questao.getIdQuestao();
@@ -28,6 +30,7 @@ public class QuestaoDto {
 		this.alternativaC = questao.getAlternativaC();
 		this.alternativaD = questao.getAlternativaD();
 		this.alternativaE = questao.getAlternativaE();
+		this.tpQuestao = questao.getTpQuestao().getNomeTipoQuestao();
 	}
 	
 	public static List<QuestaoDto> converter(List<Questao> questoes){
@@ -88,6 +91,14 @@ public class QuestaoDto {
 
 	public void setAlternativaE(String alternativaE) {
 		this.alternativaE = alternativaE;
+	}
+
+	public String getTpQuestao() {
+		return tpQuestao;
+	}
+
+	public void setTpQuestao(String tpQuestao) {
+		this.tpQuestao = tpQuestao;
 	}
 
 }

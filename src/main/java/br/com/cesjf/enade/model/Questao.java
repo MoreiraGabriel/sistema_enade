@@ -57,6 +57,19 @@ public class Questao {
 		this.listaProvas = listaProvas;
 	}
 
+	public Questao(String descricao, String alternativaA, String alternativaB, String alternativaC, String alternativaD,
+			String alternativaE, String correta, Boolean estadoQuestao, TipoQuestao tpQuestao) {
+		this.descricao = descricao;
+		this.alternativaA = alternativaA;
+		this.alternativaB = alternativaB;
+		this.alternativaC = alternativaC;
+		this.alternativaD = alternativaD;
+		this.alternativaE = alternativaE;
+		this.correta = correta;
+		this.estadoQuestao = estadoQuestao;
+		this.tpQuestao = tpQuestao;
+	}
+
 	public Long getIdQuestao() {
 		return idQuestao;
 	}
