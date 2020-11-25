@@ -60,4 +60,8 @@ public class QuestaoService {
 		}
 		return res;
 	}
+	
+	public List<Questao> obterPorIds(List<Long> idsQuestoes){
+		return repository.findAllById(idsQuestoes);
+	}
 }

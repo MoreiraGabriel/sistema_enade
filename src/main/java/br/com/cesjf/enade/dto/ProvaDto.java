@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import br.com.cesjf.enade.model.Prova;
-import br.com.cesjf.enade.model.Questao;
 
 public class ProvaDto {
 
@@ -13,14 +12,14 @@ public class ProvaDto {
 	
 	private LocalDateTime dataProva;
 	
-	private List<Questao> listaQuestoes;
+	private List<QuestaoDto> listaQuestoes;
 
 	public ProvaDto() {}
 	
 	public ProvaDto(Prova prova) {
 		this.idProva = prova.getIdProva();
 		this.dataProva = prova.getDataProva();
-		this.listaQuestoes = prova.getListaQuestoes();
+		this.listaQuestoes = QuestaoDto.converter(prova.getListaQuestoes());
 	}
 	
 	public static List<ProvaDto> converter(List<Prova> provas){
@@ -43,11 +42,11 @@ public class ProvaDto {
 		this.dataProva = dataProva;
 	}
 
-	public List<Questao> getListaQuestoes() {
+	public List<QuestaoDto> getListaQuestoes() {
 		return listaQuestoes;
 	}
 
-	public void setListaQuestoes(List<Questao> listaQuestoes) {
+	public void setListaQuestoes(List<QuestaoDto> listaQuestoes) {
 		this.listaQuestoes = listaQuestoes;
 	}
 

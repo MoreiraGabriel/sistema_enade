@@ -8,13 +8,18 @@ import org.springframework.stereotype.Service;
 
 import br.com.cesjf.enade.dto.ProvaDto;
 import br.com.cesjf.enade.model.Prova;
+import br.com.cesjf.enade.model.Questao;
 import br.com.cesjf.enade.repository.ProvaRepository;
+import br.com.cesjf.enade.request.ProvaRequest;
 
 @Service
 public class ProvaService {
 
 	@Autowired
 	private ProvaRepository repository;
+	
+	@Autowired
+	private QuestaoService serviceQuestao;
 
 	public List<ProvaDto> lista() {
 		
@@ -36,5 +41,11 @@ public class ProvaService {
 			return true;
 		}				
 		return false;
+	}
+
+	public ProvaDto cadastrar(ProvaRequest request) {
+		List<Questao> quetoes = serviceQuestao.obterPorIds(request.getIdsQuestoes());
+		Prova prova = new Prova(request.getDataProva(), quetoes);
+		return new ProvaDto(repository.save(prova));
 	}
 }

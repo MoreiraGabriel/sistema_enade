@@ -38,6 +38,11 @@ public class Prova {
 		this.resultados = resultados;
 		this.listaQuestoes = listaQuestoes;
 	}
+	
+	public Prova(LocalDateTime dataProva, List<Questao> listaQuestoes) {
+		this.dataProva = dataProva;
+		this.listaQuestoes = listaQuestoes;
+	}
 
 	public Long getIdProva() {
 		return idProva;
