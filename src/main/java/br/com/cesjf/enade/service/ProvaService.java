@@ -27,4 +27,14 @@ public class ProvaService {
 		return optional.isPresent() 
 				? new ProvaDto(optional.get()) : null;
 	}
+	
+	public Boolean deletar(Long id) {
+		Optional<Prova> optional = repository.findById(id);
+		
+		if(optional.isPresent()) {
+			repository.deleteById(id);
+			return true;
+		}				
+		return false;
+	}
 }

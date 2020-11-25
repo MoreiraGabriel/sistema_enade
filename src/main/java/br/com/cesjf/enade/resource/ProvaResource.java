@@ -31,4 +31,13 @@ public class ProvaResource {
 		}
 		return ResponseEntity.noContent().build();
 	}
+	
+	@ApiOperation(value = "Endpoint para deletar prova por id.")
+	public ResponseEntity<?> deletar(Long id){
+
+		if (Boolean.TRUE.equals(service.deletar(id))) {
+			return ResponseEntity.ok("Erro ao remover prova");
+		}
+		return ResponseEntity.notFound().build();
+	}
 }
