@@ -1,5 +1,7 @@
 package br.com.cesjf.enade.resource;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,6 +31,20 @@ public class UsuarioResource {
 	@ApiOperation(value = "Endpoint para listar todos os usuários.")
 	public ResponseEntity<?> listar(){		
 		return ResponseEntity.ok(service.obterTodos());
+	}
+	
+	@GetMapping("listar-alunos")
+	@ApiOperation(value = "Endpoint para listar todos os alunos.")
+	public ResponseEntity<?> listarAlunos(){
+		List<UsuarioDto> lista = service.obterAlunos();
+		return lista.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(lista);
+	}
+	
+	@GetMapping("listar-alunos/{id}")
+	@ApiOperation(value = "Endpoint para listar aluno por id.")
+	public ResponseEntity<?> listarAlunos(@PathVariable Long id){
+		UsuarioDto dto = service.obterAlunoPorId(id);
+		return dto == null ? ResponseEntity.noContent().build() : ResponseEntity.ok(dto);
 	}
 	
 	@GetMapping("listar/{id}")

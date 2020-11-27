@@ -62,4 +62,12 @@ public class UsuarioService {
 		return  retorno;
 	}
 
+	public List<UsuarioDto> obterAlunos() {
+		return UsuarioDto.converter(repository.listarAlunos());
+	}
+
+	public UsuarioDto obterAlunoPorId(Long id) {
+		return new UsuarioDto(repository.obterAlunoPorId(id));
+	}
+
 }
