@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class TipoQuestao {
 	
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idTipoQuestao;
 	
 	private String nomeTipoQuestao;

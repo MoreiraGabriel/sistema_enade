@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Prova {
 	
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idProva;
 	
 	private LocalDateTime dataProva;

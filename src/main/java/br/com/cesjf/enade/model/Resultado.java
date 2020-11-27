@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Resultado {
 
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private Double valorObtido;

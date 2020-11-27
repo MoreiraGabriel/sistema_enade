@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Questao {
 	
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idQuestao;
 	
 	private String descricao;
