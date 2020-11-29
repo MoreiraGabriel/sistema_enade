@@ -48,4 +48,15 @@ public class ProvaService {
 		Prova prova = new Prova(request.getDataProva(), quetoes);
 		return new ProvaDto(repository.save(prova));
 	}
+
+	public ProvaDto atualizar(Long id, ProvaRequest request) {
+		Optional<Prova> optional = repository.findById(id);
+		if(optional.isPresent()) {
+			Prova prova = optional.get();
+			prova.setDataProva(request.getDataProva());
+			prova.setListaQuestoes(serviceQuestao.obterAtivas(request.getIdsQuestoes()));
+			return new ProvaDto(repository.save(prova));
+		}
+		return null;
+	}
 }
