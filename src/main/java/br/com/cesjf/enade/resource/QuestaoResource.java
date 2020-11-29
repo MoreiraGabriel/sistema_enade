@@ -1,5 +1,7 @@
 package br.com.cesjf.enade.resource;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.cesjf.enade.dto.QuestaoDto;
 import br.com.cesjf.enade.request.QuestaoRequest;
+import br.com.cesjf.enade.response.QuestaoResponse;
 import br.com.cesjf.enade.service.QuestaoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -66,4 +69,11 @@ public class QuestaoResource {
 		return res ? ResponseEntity.ok("Removido com sucesso") : ResponseEntity.notFound().build();
 	}
 
+	@ApiOperation(value = "Endpoint para listar questão(completa).")
+	@GetMapping("listar-all")
+	public ResponseEntity<?> listarAll(){
+		List<QuestaoResponse> lista = service.obterTodas();
+		return lista.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(lista) ;
+	}
+	
 }

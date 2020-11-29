@@ -44,7 +44,7 @@ public class ProvaService {
 	}
 
 	public ProvaDto cadastrar(ProvaRequest request) {
-		List<Questao> quetoes = serviceQuestao.obterPorAtivas(request.getIdsQuestoes());
+		List<Questao> quetoes = serviceQuestao.obterAtivas(request.getIdsQuestoes());
 		Prova prova = new Prova(request.getDataProva(), quetoes);
 		return new ProvaDto(repository.save(prova));
 	}

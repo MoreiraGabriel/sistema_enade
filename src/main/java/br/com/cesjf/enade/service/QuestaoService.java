@@ -12,6 +12,7 @@ import br.com.cesjf.enade.model.TipoQuestao;
 import br.com.cesjf.enade.repository.QuestaoRepository;
 import br.com.cesjf.enade.repository.TipoQuestaoRepository;
 import br.com.cesjf.enade.request.QuestaoRequest;
+import br.com.cesjf.enade.response.QuestaoResponse;
 
 @Service
 public class QuestaoService {
@@ -65,7 +66,11 @@ public class QuestaoService {
 		return repository.findAllById(idsQuestoes);
 	}
 	
-	public List<Questao> obterPorAtivas(List<Long> idsQuestoes){
+	public List<Questao> obterAtivas(List<Long> idsQuestoes){
 		return repository.questoesAtivasPorId(idsQuestoes);
+	}
+	
+	public List<QuestaoResponse> obterTodas(){
+		return QuestaoResponse.converter(repository.findAll());
 	}
 }
