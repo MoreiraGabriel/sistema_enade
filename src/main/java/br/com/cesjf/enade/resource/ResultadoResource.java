@@ -4,10 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.cesjf.enade.dto.ResultadoDto;
+import br.com.cesjf.enade.request.ResultadoRequest;
 import br.com.cesjf.enade.service.ResultadoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -32,5 +35,12 @@ public class ResultadoResource {
 		
 		ResultadoDto dto = service.obterPorId(id);
 		return dto != null ? ResponseEntity.ok(dto) : ResponseEntity.noContent().build();
+	}
+	
+	@PostMapping("cadastrar")
+	@ApiOperation(value = "Endpoint para listar os resultados")
+	public ResponseEntity<?> cadastrar(@RequestBody ResultadoRequest request){
+
+		return ResponseEntity.ok(service.cadastrar(request));
 	}
 }

@@ -28,6 +28,12 @@ public class Resultado {
 		this.usuario = usuario;
 		this.prova = prova;
 	}
+	
+	public Resultado(Double valorObtido, Usuario usuario, Prova prova) {
+		this.valorObtido = valorObtido;
+		this.usuario = usuario;
+		this.prova = prova;
+	}
 
 	public Long getId() {
 		return id;

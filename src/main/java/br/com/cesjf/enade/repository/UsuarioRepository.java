@@ -20,4 +20,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 
 	@Query(value = "SELECT * FROM usuario WHERE id_tp_usuario = 2 AND id = :id", nativeQuery = true)
 	Usuario obterAlunoPorId(@Param("id") Long id);
+	
+	@Query(value = "SELECT * FROM resultado r INNER JOIN usuario u ON r.usuario_id = u.id", nativeQuery = true)
+	List<Usuario> relatorioAlunosComProvas();
 }

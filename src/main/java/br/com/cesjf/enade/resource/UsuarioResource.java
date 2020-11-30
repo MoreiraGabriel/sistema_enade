@@ -43,7 +43,7 @@ public class UsuarioResource {
 	@GetMapping("listar-alunos/{id}")
 	@ApiOperation(value = "Endpoint para listar aluno por id.")
 	public ResponseEntity<?> listarAlunos(@PathVariable Long id){
-		UsuarioDto dto = service.obterAlunoPorId(id);
+		UsuarioDto dto = service.obterAlunoDtoPorId(id);
 		return dto == null ? ResponseEntity.noContent().build() : ResponseEntity.ok(dto);
 	}
 	

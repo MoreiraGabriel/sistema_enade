@@ -59,4 +59,9 @@ public class ProvaService {
 		}
 		return null;
 	}
+	
+	public Prova obterProvaCompleta(Long id) {
+		Optional<Prova> optional = repository.findById(id);
+		return optional.isPresent() ? optional.get() : null;
+	}
 }

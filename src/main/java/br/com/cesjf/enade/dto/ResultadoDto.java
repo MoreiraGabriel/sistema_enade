@@ -19,7 +19,7 @@ public class ResultadoDto {
 		this.id = resultado.getId();
 		this.valorObtido = resultado.getValorObtido();
 		this.usuarioDto = new UsuarioDto(resultado.getUsuario());
-		this.provaDto = new ProvaDto(resultado.getProva());
+		this.provaDto = new ProvaDto(resultado.getId(), resultado.getProva().getDataProva());
 	}
 	
 	public static List<ResultadoDto> converter(List<Resultado> resultados){

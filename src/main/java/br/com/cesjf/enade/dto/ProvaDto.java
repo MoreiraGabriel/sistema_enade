@@ -22,6 +22,10 @@ public class ProvaDto {
 		this.listaQuestoes = QuestaoDto.converter(prova.getListaQuestoes());
 	}
 	
+	public ProvaDto(Long idProva, LocalDateTime data) {
+		this.idProva = idProva;
+		this.dataProva = data;
+	}
 	public static List<ProvaDto> converter(List<Prova> provas){
 		return provas.stream().map(ProvaDto::new).collect(Collectors.toList());
 	}
