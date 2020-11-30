@@ -44,7 +44,7 @@ public class ResultadoService {
 		
 		List<Questao> questoes = prova.getListaQuestoes();
 		List<QuestaoResultadoDto> questoesRequest = request.getQuestoes();
-		Double valorObtido = 0.00;
+		Long valorObtido = 0L;
 		
 		Iterator<Questao> iterator = questoes.iterator();
 		
@@ -70,7 +70,25 @@ public class ResultadoService {
 			}
 		}
 		
-		Resultado resultado = new Resultado(valorObtido, usuario, prova);
+		Double res = 0.00;
+		
+		if(valorObtido > 19 && valorObtido <= 24) {
+			res = 6.72;
+		}
+		
+		if(valorObtido > 24 && valorObtido <= 29) {
+			res = 8.12;
+		}
+		
+		if(valorObtido > 29 && valorObtido <= 35) {
+			res = 8.4;
+		}
+		
+		if(valorObtido == 36) {
+			res = 10.00;
+		}
+		
+		Resultado resultado = new Resultado(res, usuario, prova);
 	
 		return new ResultadoDto(repository.save(resultado));
 

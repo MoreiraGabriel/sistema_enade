@@ -27,7 +27,7 @@ public class RelatorioResource {
 	private ResultadoService serviceResultado;
 	
 	@GetMapping("alunos-sem-prova")
-	@ApiOperation(value = "Endpoint para trazer usuários que não fizeram prova.")
+	@ApiOperation(value = "Endpoint para trazer alunos que não fizeram prova.")
 	public ResponseEntity<?> alunosSemProva(){
 		List<UsuarioDto> listaAlunos = serviceUsuario.obterAlunosSemProva();
 		
@@ -36,7 +36,7 @@ public class RelatorioResource {
 	}
 	
 	@GetMapping("alunos-com-prova")
-	@ApiOperation(value = "Endpoint para trazer usuários que fizeram prova.")
+	@ApiOperation(value = "Endpoint para trazer alunos que fizeram prova.")
 	public ResponseEntity<?> alunosComProva(){
 		List<ResultadoDto> listaResultados = serviceResultado.obterAlunosComProva();
 		
@@ -45,7 +45,7 @@ public class RelatorioResource {
 	}
 	
 	@GetMapping("alunos")
-	@ApiOperation(value = "Endpoint para trazer usuários que fizeram prova.")
+	@ApiOperation(value = "Endpoint para trazer todos os alunos.")
 	public ResponseEntity<?> obterAlunos(){
 		List<UsuarioDto> listaAlunos = serviceUsuario.obterAlunos();
 		
