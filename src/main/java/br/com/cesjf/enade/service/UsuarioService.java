@@ -74,4 +74,9 @@ public class UsuarioService {
 		return repository.obterAlunoPorId(id);
 	}
 
+	public List<UsuarioDto> obterAlunosSemProva() {
+		return UsuarioDto.converter(repository.relatorioAlunosSemProva());
+	}
+	
+
 }

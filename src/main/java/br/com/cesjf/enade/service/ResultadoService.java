@@ -75,4 +75,9 @@ public class ResultadoService {
 		return new ResultadoDto(repository.save(resultado));
 
 	}
+
+	public List<ResultadoDto> obterAlunosComProva() {
+		
+		return ResultadoDto.converter(repository.relatorioAlunosComProvas());
+	}
 }
