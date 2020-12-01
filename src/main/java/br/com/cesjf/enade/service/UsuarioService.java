@@ -77,6 +77,15 @@ public class UsuarioService {
 	public List<UsuarioDto> obterAlunosSemProva() {
 		return UsuarioDto.converter(repository.relatorioAlunosSemProva());
 	}
+
+	public UsuarioDto logar(UsuarioRequest request) {
+		Usuario usuario = repository.findByEmailUsuario(request.getEmailUsuario());
+		
+		if(usuario.getSenhaUsuario().equals(request.getSenhaUsuario())) {
+			return new UsuarioDto(usuario);
+		}
+		return null;
+	}
 	
 
 }

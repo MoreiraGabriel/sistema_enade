@@ -10,6 +10,7 @@ public class UsuarioDto {
 	private Long id;	
 	private String nomeUsuario;	
 	private String emailUsuario;
+	private String tipoUsuario;
 	
 	public UsuarioDto() {}
 
@@ -17,6 +18,7 @@ public class UsuarioDto {
 		this.id = usuario.getId();
 		this.nomeUsuario = usuario.getNomeUsuario();
 		this.emailUsuario = usuario.getEmailUsuario();
+		this.tipoUsuario = usuario.getTipoUsuario().getNomeUsuario();
 	}
 	
 	public static List<UsuarioDto> converter(List<Usuario> usuarios){
@@ -45,6 +47,14 @@ public class UsuarioDto {
 
 	public void setEmailUsuario(String emailUsuario) {
 		this.emailUsuario = emailUsuario;
+	}
+
+	public String getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 	
 }

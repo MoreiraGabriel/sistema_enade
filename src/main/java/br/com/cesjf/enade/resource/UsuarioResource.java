@@ -76,4 +76,13 @@ public class UsuarioResource {
 		return service.deletar(id).equals(true)
 				? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
 	}
+	
+	@GetMapping("logar")
+	@ApiOperation(value = "Endpoint para logar usuáraio.")
+	public ResponseEntity<?> logar(@RequestBody UsuarioRequest request){
+
+		UsuarioDto dto = service.logar(request);
+		return dto == null ?  ResponseEntity.notFound().build() 
+				: ResponseEntity.ok(dto);
+	}
 }
