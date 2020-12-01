@@ -53,4 +53,12 @@ public class RelatorioResource {
 				: ResponseEntity.ok(listaAlunos);
 	}
 
+	@GetMapping("resultados-last")
+	@ApiOperation(value = "Endpoint para trazer todos os alunos.")
+	public ResponseEntity<?> obterLast10AlunosComProva(){
+		List<ResultadoDto> listaResultados = serviceResultado.obterLast10AlunosComProva();
+		
+		return listaResultados.isEmpty() ? ResponseEntity.noContent().build() 
+				: ResponseEntity.ok(listaResultados);
+	}
 }

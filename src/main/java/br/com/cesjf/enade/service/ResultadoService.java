@@ -98,4 +98,8 @@ public class ResultadoService {
 		
 		return ResultadoDto.converter(repository.relatorioAlunosComProvas());
 	}
+	
+	public List<ResultadoDto> obterLast10AlunosComProva() {
+		return ResultadoDto.converter(repository.relatorioLast10Alunos());
+	}
 }

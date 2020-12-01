@@ -85,7 +85,6 @@ public class UsuarioService {
 			return new UsuarioDto(usuario);
 		}
 		return null;
-	}
-	
+	}	
 
 }
