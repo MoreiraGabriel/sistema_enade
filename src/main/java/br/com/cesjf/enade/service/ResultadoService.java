@@ -1,6 +1,5 @@
 package br.com.cesjf.enade.service;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,22 +42,17 @@ public class ResultadoService {
 		Usuario usuario = serviceUsuario.obterAlunoPorId(request.getIdUsuario());
 		
 		List<Questao> questoes = prova.getListaQuestoes();
+		
 		List<QuestaoResultadoDto> questoesRequest = request.getQuestoes();
 		Long valorObtido = 0L;
-		
-		Iterator<Questao> iterator = questoes.iterator();
-		
-		while (iterator.hasNext()) {
-			Questao q2 = iterator.next();
-			if (q2.getTpQuestao().getIdTipoQuestao() == (1) 
-					|| q2.getTpQuestao().getIdTipoQuestao() == (3)) {
-				
-				iterator.remove();
-				valorObtido++;
-			}			
-		}	
 
 		for (Questao questao : questoes) {	
+			
+			if (questao.getTpQuestao().getIdTipoQuestao() == (1) 
+					|| questao.getTpQuestao().getIdTipoQuestao() == (3)) {
+
+				valorObtido++;
+			}
 
 			for (QuestaoResultadoDto questaoResultadoDto : questoesRequest) {			
 				
@@ -66,7 +60,7 @@ public class ResultadoService {
 						questaoResultadoDto.getResposta().equals(questao.getCorreta())) {	
 					
 					valorObtido++;					
-				}
+				}					
 			}
 		}
 		
