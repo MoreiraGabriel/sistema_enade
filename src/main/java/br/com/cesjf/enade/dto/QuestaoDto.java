@@ -4,22 +4,33 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import br.com.cesjf.enade.model.Questao;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+@ApiModel(value = "DTO para questao.")
 public class QuestaoDto {
+	@ApiModelProperty(value = "Id da questão.")
 	private Long idQuestao;
 	
+	@ApiModelProperty(value = "Descrição da questão.")
 	private String descricao;
 	
+	@ApiModelProperty(value = "Alternativa A")
 	private String alternativaA;
 	
+	@ApiModelProperty(value = "Alternativa B")
 	private String alternativaB;
 	
+	@ApiModelProperty(value = "Alternativa C")
 	private String alternativaC;
 	
+	@ApiModelProperty(value = "Alternativa D")
 	private String alternativaD;
 	
+	@ApiModelProperty(value = "Alternativa E")
 	private String alternativaE;
 	
+	@ApiModelProperty(value = "Tipo da questão")
 	private String tpQuestao;
 
 	public QuestaoDto(Questao questao) {

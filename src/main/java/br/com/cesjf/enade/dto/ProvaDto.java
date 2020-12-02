@@ -5,13 +5,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import br.com.cesjf.enade.model.Prova;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+@ApiModel(value = "Dto para prova.")
 public class ProvaDto {
 
+	@ApiModelProperty(value = "Id da prova.")
 	private Long idProva;
 	
+	@ApiModelProperty(value = "Data da prova.")
 	private LocalDateTime dataProva;
 	
+	@ApiModelProperty(value = "Lista de questões.")
 	private List<QuestaoDto> listaQuestoes;
 
 	public ProvaDto() {}

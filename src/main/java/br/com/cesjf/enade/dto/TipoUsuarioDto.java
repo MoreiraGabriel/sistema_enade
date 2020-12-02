@@ -4,11 +4,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import br.com.cesjf.enade.model.TipoUsuario;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+@ApiModel(value = "DTO para tipo de usuário.")
 public class TipoUsuarioDto {
 
+	@ApiModelProperty(value = "Id tipo usuário.")
 	private Long idTipoUsuario;
 	
+	@ApiModelProperty(value = "Tipo do usuário.")
 	private String nomeUsuario;
 
 	public TipoUsuarioDto(TipoUsuario tpUsuario) {

@@ -4,15 +4,22 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import br.com.cesjf.enade.model.Resultado;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+@ApiModel(value = "DTO para resultado.")
 public class ResultadoDto {
 
+	@ApiModelProperty(value = "Id do resultado.")
 	private Long id;
 	
+	@ApiModelProperty(value = "Valor obtido pelo aluno.")
 	private Double valorObtido;
 	
+	@ApiModelProperty(value = "Aluno.")
 	private UsuarioDto usuarioDto;
 	
+	@ApiModelProperty(value = "Prova que foi realizada.")
 	private ProvaDto provaDto;
 
 	public ResultadoDto(Resultado resultado) {

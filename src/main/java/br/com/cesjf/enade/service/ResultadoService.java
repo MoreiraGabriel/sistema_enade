@@ -96,4 +96,5 @@ public class ResultadoService {
 	public List<ResultadoDto> obterLast10AlunosComProva() {
 		return ResultadoDto.converter(repository.relatorioLast10Alunos());
 	}
+
 }

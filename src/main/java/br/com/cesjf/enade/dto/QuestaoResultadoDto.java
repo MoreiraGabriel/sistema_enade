@@ -1,9 +1,15 @@
 package br.com.cesjf.enade.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value = "DTO para resposta da questão.")
 public class QuestaoResultadoDto {
 
+	@ApiModelProperty(value = "Id da questão")
 	private Long idQuestao;
 	
+	@ApiModelProperty(value = "Resposta do aluno.")
 	private String resposta;
 
 	public QuestaoResultadoDto(Long idQuestao, String resposta) {
