@@ -40,7 +40,7 @@ public class ResultadoResource {
 	}
 	
 	@PostMapping("cadastrar")
-	@ApiOperation(value = "Endpoint para listar os resultados")
+	@ApiOperation(value = "Endpoint para cadastrar os resultados")
 	public ResponseEntity<ResultadoDto> cadastrar(@RequestBody ResultadoRequest request){
 
 		return ResponseEntity.ok(service.cadastrar(request));
