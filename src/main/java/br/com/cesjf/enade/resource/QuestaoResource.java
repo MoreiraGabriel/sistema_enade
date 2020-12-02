@@ -30,13 +30,13 @@ public class QuestaoResource {
 	
 	@ApiOperation(value = "Endpoint para listar questão.")
 	@GetMapping("listar")
-	public ResponseEntity<?> listar(){
+	public ResponseEntity<List<QuestaoDto>> listar(){
 		return ResponseEntity.ok(service.listar());
 	}
 	
 	@ApiOperation(value = "Endpoint para listar questão por id.")
 	@GetMapping("listar/{id}")
-	public ResponseEntity<?> listarPorId(@PathVariable Long id){
+	public ResponseEntity<QuestaoDto> listarPorId(@PathVariable Long id){
 
 		QuestaoDto dto = service.listarPorId(id);
 		if(dto == null) {
@@ -47,7 +47,7 @@ public class QuestaoResource {
 	
 	@ApiOperation(value = "Endpoint para cadastrar questão.")
 	@PostMapping("cadastrar")
-	public ResponseEntity<?> cadastrar(@RequestBody QuestaoRequest request){
+	public ResponseEntity<QuestaoDto> cadastrar(@RequestBody QuestaoRequest request){
 		QuestaoDto res = service.cadastrar(request);
 		
 		return res != null ? ResponseEntity.ok(res) : ResponseEntity.notFound().build();
@@ -55,7 +55,7 @@ public class QuestaoResource {
 	
 	@ApiOperation(value = "Endpoint para cadastrar questão.")
 	@PutMapping("atualizar/{id}")
-	public ResponseEntity<?> atualizaar(@PathVariable Long id, @RequestBody QuestaoRequest request){
+	public ResponseEntity<QuestaoDto> atualizaar(@PathVariable Long id, @RequestBody QuestaoRequest request){
 		QuestaoDto res = service.atualizar(id, request);
 		
 		return res != null ? ResponseEntity.ok(res) : ResponseEntity.notFound().build();
@@ -63,7 +63,7 @@ public class QuestaoResource {
 	
 	@ApiOperation(value = "Endpoint para deletar questão por id.")
 	@DeleteMapping("deletar/{id}")
-	public ResponseEntity<?> deletar(@PathVariable Long id){
+	public ResponseEntity<String> deletar(@PathVariable Long id){
 		boolean res = service.deletar(id);
 		
 		return res ? ResponseEntity.ok("Removido com sucesso") : ResponseEntity.notFound().build();
@@ -71,7 +71,7 @@ public class QuestaoResource {
 
 	@ApiOperation(value = "Endpoint para listar questão(completa).")
 	@GetMapping("listar-all")
-	public ResponseEntity<?> listarAll(){
+	public ResponseEntity<List<QuestaoResponse>> listarAll(){
 		List<QuestaoResponse> lista = service.obterTodas();
 		return lista.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(lista) ;
 	}

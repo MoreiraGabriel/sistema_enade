@@ -1,5 +1,7 @@
 package br.com.cesjf.enade.resource;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,13 +29,13 @@ public class ProvaResource {
 	
 	@ApiOperation(value = "Endpoint para listar todas as provas.")
 	@GetMapping("listar")
-	public ResponseEntity<?> listarTodas(){
+	public ResponseEntity<List<ProvaDto>> listarTodas(){
 		return ResponseEntity.ok(service.lista());
 	}
 	
 	@ApiOperation(value = "Endpoint para listar prova por id.")
 	@GetMapping("listar/{id}")
-	public ResponseEntity<?> obterPorId(@PathVariable Long id){
+	public ResponseEntity<ProvaDto> obterPorId(@PathVariable Long id){
 		ProvaDto dto = service.obterPorId(id);
 		if (dto != null) {
 			return ResponseEntity.ok(dto);
@@ -43,7 +45,7 @@ public class ProvaResource {
 	
 	@ApiOperation(value = "Endpoint para deletar prova por id.")
 	@DeleteMapping("deletar")
-	public ResponseEntity<?> deletar(@PathVariable Long id){
+	public ResponseEntity<String> deletar(@PathVariable Long id){
 
 		if (Boolean.TRUE.equals(service.deletar(id))) {
 			return ResponseEntity.ok("Prova removida com sucesso");
@@ -53,14 +55,14 @@ public class ProvaResource {
 	
 	@ApiOperation(value = "Endpoint para cadastrar prova.")
 	@PostMapping("cadastrar")
-	public ResponseEntity<?> cadastrar(@RequestBody ProvaRequest request){
+	public ResponseEntity<ProvaDto> cadastrar(@RequestBody ProvaRequest request){
 
 		return ResponseEntity.ok(service.cadastrar(request));
 	}
 	
 	@ApiOperation(value = "Endpoint para atualizar prova.")
 	@PutMapping("atualizar/{id}")
-	public ResponseEntity<?> atualizar(@PathVariable Long id, 
+	public ResponseEntity<ProvaDto> atualizar(@PathVariable Long id, 
 			@RequestBody ProvaRequest request){
 
 		ProvaDto dto = service.atualizar(id, request);

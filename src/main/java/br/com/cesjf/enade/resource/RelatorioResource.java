@@ -28,7 +28,7 @@ public class RelatorioResource {
 	
 	@GetMapping("alunos-sem-prova")
 	@ApiOperation(value = "Endpoint para trazer alunos que não fizeram prova.")
-	public ResponseEntity<?> alunosSemProva(){
+	public ResponseEntity<List<UsuarioDto>> alunosSemProva(){
 		List<UsuarioDto> listaAlunos = serviceUsuario.obterAlunosSemProva();
 		
 		return listaAlunos.isEmpty() ? ResponseEntity.noContent().build() 
@@ -37,7 +37,7 @@ public class RelatorioResource {
 	
 	@GetMapping("alunos-com-prova")
 	@ApiOperation(value = "Endpoint para trazer alunos que fizeram prova.")
-	public ResponseEntity<?> alunosComProva(){
+	public ResponseEntity<List<ResultadoDto>> alunosComProva(){
 		List<ResultadoDto> listaResultados = serviceResultado.obterAlunosComProva();
 		
 		return listaResultados.isEmpty() ? ResponseEntity.noContent().build() 
@@ -46,7 +46,7 @@ public class RelatorioResource {
 	
 	@GetMapping("alunos")
 	@ApiOperation(value = "Endpoint para trazer todos os alunos.")
-	public ResponseEntity<?> obterAlunos(){
+	public ResponseEntity<List<UsuarioDto>> obterAlunos(){
 		List<UsuarioDto> listaAlunos = serviceUsuario.obterAlunos();
 		
 		return listaAlunos.isEmpty() ? ResponseEntity.noContent().build() 
@@ -55,7 +55,7 @@ public class RelatorioResource {
 
 	@GetMapping("resultados-last")
 	@ApiOperation(value = "Endpoint para trazer todos os alunos.")
-	public ResponseEntity<?> obterLast10AlunosComProva(){
+	public ResponseEntity<List<ResultadoDto>> obterLast10AlunosComProva(){
 		List<ResultadoDto> listaResultados = serviceResultado.obterLast10AlunosComProva();
 		
 		return listaResultados.isEmpty() ? ResponseEntity.noContent().build() 

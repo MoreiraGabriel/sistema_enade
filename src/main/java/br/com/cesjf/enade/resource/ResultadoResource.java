@@ -1,5 +1,7 @@
 package br.com.cesjf.enade.resource;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,13 +27,13 @@ public class ResultadoResource {
 	
 	@GetMapping("listar")
 	@ApiOperation(value = "Endpoint para listar os resultados")
-	public ResponseEntity<?> listar(){
+	public ResponseEntity<List<ResultadoDto>> listar(){
 		return ResponseEntity.ok(service.listar());
 	}
 	
 	@GetMapping("listar/{id}")
 	@ApiOperation(value = "Endpoint para listar os resultados")
-	public ResponseEntity<?> obterPorId(@PathVariable Long id){
+	public ResponseEntity<ResultadoDto> obterPorId(@PathVariable Long id){
 		
 		ResultadoDto dto = service.obterPorId(id);
 		return dto != null ? ResponseEntity.ok(dto) : ResponseEntity.noContent().build();
@@ -39,7 +41,7 @@ public class ResultadoResource {
 	
 	@PostMapping("cadastrar")
 	@ApiOperation(value = "Endpoint para listar os resultados")
-	public ResponseEntity<?> cadastrar(@RequestBody ResultadoRequest request){
+	public ResponseEntity<ResultadoDto> cadastrar(@RequestBody ResultadoRequest request){
 
 		return ResponseEntity.ok(service.cadastrar(request));
 	}
