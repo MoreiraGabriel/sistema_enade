@@ -53,8 +53,8 @@ public class RelatorioResource {
 				: ResponseEntity.ok(listaAlunos);
 	}
 
-	@GetMapping("resultados-last")
-	@ApiOperation(value = "Endpoint para trazer todos os alunos.")
+	@GetMapping("resultados-last10")
+	@ApiOperation(value = "Endpoint para trazer útlimos 10 alunos que fizeram prova.")
 	public ResponseEntity<List<ResultadoDto>> obterLast10AlunosComProva(){
 		List<ResultadoDto> listaResultados = serviceResultado.obterLast10AlunosComProva();
 		
