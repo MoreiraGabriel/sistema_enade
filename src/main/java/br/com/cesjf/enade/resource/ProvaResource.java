@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.cesjf.enade.dto.ProvaDto;
+import br.com.cesjf.enade.exception.EnadeException;
 import br.com.cesjf.enade.request.ProvaRequest;
 import br.com.cesjf.enade.service.ProvaService;
 import io.swagger.annotations.Api;
@@ -55,20 +56,24 @@ public class ProvaResource {
 	
 	@ApiOperation(value = "Endpoint para cadastrar prova.")
 	@PostMapping("cadastrar")
-	public ResponseEntity<ProvaDto> cadastrar(@RequestBody ProvaRequest request){
+	public ResponseEntity<ProvaDto> cadastrar(@RequestBody ProvaRequest request) throws Exception{
 
 		return ResponseEntity.ok(service.cadastrar(request));
 	}
 	
 	@ApiOperation(value = "Endpoint para atualizar prova.")
 	@PutMapping("atualizar/{id}")
-	public ResponseEntity<ProvaDto> atualizar(@PathVariable Long id, 
-			@RequestBody ProvaRequest request){
+	public ResponseEntity<?> atualizar(@PathVariable Long id, 
+			@RequestBody ProvaRequest request) {
 
-		ProvaDto dto = service.atualizar(id, request);
-		if(dto != null){
-			return ResponseEntity.ok(dto);
+		try {
+			ProvaDto dto = service.atualizar(id, request);
+			if(dto != null){ return ResponseEntity.ok(dto); }
+			
+		} catch (EnadeException e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
 		}
+		
 		return ResponseEntity.notFound().build();
 	}
 }
