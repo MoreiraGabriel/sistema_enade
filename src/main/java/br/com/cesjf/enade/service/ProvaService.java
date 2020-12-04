@@ -56,10 +56,10 @@ public class ProvaService {
 
 	public ProvaDto atualizar(Long id, ProvaRequest request){
 		List<Long> idsQuestoes = request.getIdsQuestoes();
-		Long qtdIds = idsQuestoes.get(idsQuestoes.size() - 1);
+		int qtdIds = request.getIdsQuestoes().size();
 
-		if(qtdIds > 36) {
-			throw new EnadeException("Prova com mais de 36 questões:", qtdIds);
+		if(qtdIds != 36) {
+			throw new EnadeException("Número de questões inválido.", qtdIds);
 		}
 		
 		Optional<Prova> optional = repository.findById(id);

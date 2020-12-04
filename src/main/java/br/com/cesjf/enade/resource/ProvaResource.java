@@ -71,7 +71,7 @@ public class ProvaResource {
 			if(dto != null){ return ResponseEntity.ok(dto); }
 			
 		} catch (EnadeException e) {
-			return ResponseEntity.badRequest().body(e.getMessage());
+			return ResponseEntity.badRequest().body(e.getErro());
 		}
 		
 		return ResponseEntity.notFound().build();
