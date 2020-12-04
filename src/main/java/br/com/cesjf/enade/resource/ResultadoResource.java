@@ -47,10 +47,10 @@ public class ResultadoResource {
 		return ResponseEntity.ok(service.cadastrar(request));
 	}
 	
-	@PostMapping("validar-aluno")
+	@PostMapping("validar-aluno/{id}")
 	@ApiOperation(value = "Endpoint para cadastrar os resultados")
-	public ResponseEntity<Boolean> validarAluno(@RequestBody Long idUsuario){
-		Boolean res = service.verificarProvaAluno(idUsuario);
+	public ResponseEntity<Boolean> validarAluno(@PathVariable Long id){
+		Boolean res = service.verificarProvaAluno(id);
 		return res.equals(Boolean.TRUE) ? ResponseEntity.ok(res) 
 				: new ResponseEntity<>(false,HttpStatus.FORBIDDEN);
 	}
