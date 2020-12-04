@@ -78,7 +78,7 @@ public class UsuarioResource {
 				? ResponseEntity.ok("Removido com Sucesso!") : ResponseEntity.notFound().build();
 	}
 	
-	@GetMapping("logar")
+	@PostMapping("logar")
 	@ApiOperation(value = "Endpoint para logar usuáraio.")
 	public ResponseEntity<UsuarioDto> logar(@RequestBody LoginRequest request){
 
