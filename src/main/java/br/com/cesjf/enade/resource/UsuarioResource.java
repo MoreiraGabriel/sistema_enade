@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.cesjf.enade.dto.UsuarioDto;
+import br.com.cesjf.enade.request.LoginRequest;
 import br.com.cesjf.enade.request.UsuarioRequest;
 import br.com.cesjf.enade.service.UsuarioService;
 import io.swagger.annotations.Api;
@@ -79,7 +80,7 @@ public class UsuarioResource {
 	
 	@GetMapping("logar")
 	@ApiOperation(value = "Endpoint para logar usuáraio.")
-	public ResponseEntity<UsuarioDto> logar(@RequestBody UsuarioRequest request){
+	public ResponseEntity<UsuarioDto> logar(@RequestBody LoginRequest request){
 
 		UsuarioDto dto = service.logar(request);
 		return dto == null ?  ResponseEntity.notFound().build() 

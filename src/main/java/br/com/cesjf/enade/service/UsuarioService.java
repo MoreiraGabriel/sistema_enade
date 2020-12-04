@@ -10,6 +10,7 @@ import br.com.cesjf.enade.dto.UsuarioDto;
 import br.com.cesjf.enade.model.Usuario;
 import br.com.cesjf.enade.repository.TipoUsuarioRepository;
 import br.com.cesjf.enade.repository.UsuarioRepository;
+import br.com.cesjf.enade.request.LoginRequest;
 import br.com.cesjf.enade.request.UsuarioRequest;
 
 @Service
@@ -78,7 +79,7 @@ public class UsuarioService {
 		return UsuarioDto.converter(repository.relatorioAlunosSemProva());
 	}
 
-	public UsuarioDto logar(UsuarioRequest request) {
+	public UsuarioDto logar(LoginRequest request) {
 		Usuario usuario = repository.findByEmailUsuario(request.getEmailUsuario());
 		
 		if(usuario.getSenhaUsuario().equals(request.getSenhaUsuario())) {
