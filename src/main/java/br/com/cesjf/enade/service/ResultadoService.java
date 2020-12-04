@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.cesjf.enade.dto.QuestaoResultadoDto;
 import br.com.cesjf.enade.dto.ResultadoDto;
+import br.com.cesjf.enade.dto.UsuarioDto;
 import br.com.cesjf.enade.model.Prova;
 import br.com.cesjf.enade.model.Questao;
 import br.com.cesjf.enade.model.Resultado;
@@ -38,6 +39,7 @@ public class ResultadoService {
 	}
 
 	public ResultadoDto cadastrar(ResultadoRequest request) {
+		
 		Prova prova = serviceProva.obterProvaCompleta(request.getIdProva());
 		Usuario usuario = serviceUsuario.obterAlunoPorId(request.getIdUsuario());
 		
@@ -95,6 +97,19 @@ public class ResultadoService {
 	
 	public List<ResultadoDto> obterLast10AlunosComProva() {
 		return ResultadoDto.converter(repository.relatorioLast10Alunos());
+	}
+	
+	public Boolean verificarProvaAluno(Long idAluno) {
+		
+		List<UsuarioDto> alunosSemProva = serviceUsuario.obterAlunosSemProva();
+		
+		for (UsuarioDto alunoDto : alunosSemProva) {
+			if(alunoDto.getId().equals(idAluno)) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 
 }

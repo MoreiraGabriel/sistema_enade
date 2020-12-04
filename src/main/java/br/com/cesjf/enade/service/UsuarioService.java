@@ -76,7 +76,7 @@ public class UsuarioService {
 	}
 
 	public List<UsuarioDto> obterAlunosSemProva() {
-		return UsuarioDto.converter(repository.relatorioAlunosSemProva());
+		return UsuarioDto.converter(repository.alunosSemProva());
 	}
 
 	public UsuarioDto logar(LoginRequest request) {

@@ -24,7 +24,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	@Query(value = "SELECT u.* FROM usuario u LEFT JOIN resultado r "
 			+ "ON r.usuario_id = u.id WHERE r.usuario_id IS NULL "
 			+ "AND u.id_tp_usuario = 2", nativeQuery = true)
-	List<Usuario> relatorioAlunosSemProva();
+	List<Usuario> alunosSemProva();
 	
 	Usuario findByEmailUsuario(String emailUsuario);
 	

@@ -3,6 +3,7 @@ package br.com.cesjf.enade.resource;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,5 +45,13 @@ public class ResultadoResource {
 	public ResponseEntity<ResultadoDto> cadastrar(@RequestBody ResultadoRequest request){
 
 		return ResponseEntity.ok(service.cadastrar(request));
+	}
+	
+	@PostMapping("validar-aluno")
+	@ApiOperation(value = "Endpoint para cadastrar os resultados")
+	public ResponseEntity<Boolean> validarAluno(@RequestBody Long idUsuario){
+		Boolean res = service.verificarProvaAluno(idUsuario);
+		return res.equals(Boolean.TRUE) ? ResponseEntity.ok(res) 
+				: new ResponseEntity<>(false,HttpStatus.FORBIDDEN);
 	}
 }
