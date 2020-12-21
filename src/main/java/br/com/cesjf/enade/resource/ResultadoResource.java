@@ -48,7 +48,7 @@ public class ResultadoResource {
 	}
 	
 	@PostMapping("validar-aluno/{id}")
-	@ApiOperation(value = "Endpoint para cadastrar os resultados")
+	@ApiOperation(value = "Endpoint para verificar se o aluno já fez a prova")
 	public ResponseEntity<Boolean> validarAluno(@PathVariable Long id){
 		Boolean res = service.verificarProvaAluno(id);
 		return res.equals(Boolean.TRUE) ? ResponseEntity.ok(res) 

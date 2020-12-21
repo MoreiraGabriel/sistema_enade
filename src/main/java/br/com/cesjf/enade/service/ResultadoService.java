@@ -68,21 +68,9 @@ public class ResultadoService {
 		
 		Double res = 0.00;
 		
-		if(valorObtido > 19 && valorObtido <= 24) {
-			res = 6.72;
-		}
-		
-		if(valorObtido > 24 && valorObtido <= 29) {
-			res = 8.12;
-		}
-		
-		if(valorObtido > 29 && valorObtido <= 35) {
-			res = 8.4;
-		}
-		
-		if(valorObtido == 36) {
-			res = 10.00;
-		}
+		if(valorObtido > 19) {
+			res = 0.2777777777777778 * valorObtido;
+		}		
 		
 		Resultado resultado = new Resultado(res, usuario, prova);
 	
